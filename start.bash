@@ -6,6 +6,7 @@ _IP=`ifconfig $_NETWORK | grep 'inet ' | awk '{print $2}' | grep -Eo '([0-9]*\\.
 echo "Host IP address: $_IP"
 
 docker run --rm -it \
+    -v $HOME/.composer/:/root/.composer/ \
     -v $HOME/.php/:/atm \
     -v $HOME/.php/container.ini:/usr/local/etc/php/conf.d/atm.ini \
     -v $HOME/.php/bin/composer:/usr/local/bin/composer \
